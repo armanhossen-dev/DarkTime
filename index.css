@@ -6,6 +6,19 @@
     font-size: clamp(1rem, 2.5vw, 1.5rem);
 }
 
+html, body {
+    background: black;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden; 
+}
+
+body {
+    overflow: hidden;
+}
+
+
 .hero{
     width: 100%;
     min-height: 100vh;
@@ -97,9 +110,14 @@
 }
 
 @media (max-width: 768px) {
+  
+    
+    
     .container {
         transform: translate(-40%, -50%) rotate(90deg);
-
+        height: 100%;
+        width: 100%;
+        background: black;
     }
       
     .clock{
@@ -121,8 +139,9 @@
         font-size: 22px;
     }        
     .date {
-        transform: translate(-50%, -50%) rotate(0deg);
-        margin-top: -40px;
+        transform: translate(0%, -600%) rotate(-360deg);
+        margin-top: -90px;
+        margin-left: 0px;
         font-size: 2rem;
     }
 }
