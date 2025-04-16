@@ -110,10 +110,7 @@ Original video: https://youtu.be/5tC46h022YE?si=KAsNohpfIpt2tNja
         font-size: clamp(2rem, 5vw, 4rem);
         width: auto;
     }
-    .container{
-        width: 90vw;
-        height: 50vh;
-    }    
+    
     .clock span{
         font-size: 13rem;
         width: 300px;
