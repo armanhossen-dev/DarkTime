@@ -1,0 +1,101 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+.hero{
+    width: 100%;
+    min-height: 100vh;
+    background: black;
+    position: relative;    
+}
+
+.container{
+    width: 90vw;
+    height: 45vh;
+    
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    
+    transform: translate(-50%,-50%);
+    z-index: 1;
+}
+
+.clock{
+    width: 100%;
+    height: 100%;
+    background: rgba(34, 34, 34, 0.257);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px); 
+}
+
+.clock span{
+    font-size: 150px;
+    width: 200px;
+    font-weight: 600;
+    display: inline-block;
+    text-align: center;
+    position: relative;
+    color: rgb(255, 255, 255);
+}
+
+.clock span::after{
+    font-size: 18px;
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#hr::after{
+    content: 'HOURS';
+}
+
+#min::after{
+    content: 'MINUTES';
+}
+
+#sec::after{
+    content: 'SECONDS';
+}
+
+.date {
+    margin-top: 15px;
+    font-size: 1.8rem;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-weight: bolder;
+}
+
+@media screen and (min-width: 1920px) {
+    .container{
+        width: 90vw;
+        height: 50vh;
+    }    
+    .clock span{
+        font-size: 13rem;
+        width: 300px;
+        font-weight: 600;
+    }
+    .clock span::after{
+        font-size: 26px;
+    }        
+    .date {
+        margin-top: 40px;
+        font-size: 3rem;
+    }
+}
+
+/*
+Code inspired by the YouTube channel 'GreatStack'.
+Original video: https://youtu.be/5tC46h022YE?si=KAsNohpfIpt2tNja
+*/
