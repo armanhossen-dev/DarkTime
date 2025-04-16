@@ -120,7 +120,7 @@ Original video: https://youtu.be/5tC46h022YE?si=KAsNohpfIpt2tNja
         font-size: 22px;
     }        
     .date {
-        transform: translate(-50%, -50%) rotate(90deg);
+        transform: translate(-50%, -50%) rotate(-90deg);
         margin-top: 20px;
         font-size: 2.5rem;
     }
