@@ -76,6 +76,12 @@
     font-weight: bolder;
 }
 
+/*
+Code inspired by the YouTube channel 'GreatStack'.
+Original video: https://youtu.be/5tC46h022YE?si=KAsNohpfIpt2tNja
+*/
+
+
 @media screen and (min-width: 1920px) {
     .container{
         width: 90vw;
@@ -95,7 +101,13 @@
     }
 }
 
-/*
-Code inspired by the YouTube channel 'GreatStack'.
-Original video: https://youtu.be/5tC46h022YE?si=KAsNohpfIpt2tNja
-*/
+@media (max-width: 768px) {
+    .container {
+        transform: translate(-50%, -50%) rotate(90deg);
+    }
+
+    .clock span {
+        font-size: clamp(2rem, 5vw, 4rem);
+        width: auto;
+    }
+}
