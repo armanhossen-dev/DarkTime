@@ -110,7 +110,7 @@ body {
 
 @media (max-width: 768px) {    
     .container {
-        transform: translate(-45%, -50%) rotate(90deg);
+        transform: translate(-50%, -50%) rotate(90deg);
         height: 100%;
         width: 100%;
         background: black;
@@ -133,6 +133,12 @@ body {
         font-size: 22px;
     }        
     .date {
-        display: none;
+        transform: translate(-50%, -50%) rotate(360deg);
+        display: block;
+        font-size: 1.2rem;
+        margin-top: 10px;
+        text-align: center;
+        color: #fff;
+        font-weight: bold;
     }
 }
