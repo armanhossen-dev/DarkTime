@@ -2,7 +2,8 @@
 
 A stylish digital clock built using **HTML**, **CSS**, and **JavaScript**, featuring a sleek black-themed design and responsive layout. It displays the current time and date in real-time.
 
-![DarkTime Clock Screenshot](https://raw.githubusercontent.com/armanhossen-dev/DarkTime/refs/heads/main/Screenshot.png)
+
+https://raw.githubusercontent.com/armanhossen-dev/DarkTime/refs/heads/main/Screenshot.png
 
 ## 🔥 Features
 
