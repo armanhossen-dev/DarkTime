@@ -2,7 +2,7 @@
 
 A stylish digital clock built using **HTML**, **CSS**, and **JavaScript**, featuring a sleek black-themed design and responsive layout. It displays the current time and date in real-time.
 
-![DarkTime Clock Screenshot](link_to_your_screenshot.png)
+![DarkTime Clock Screenshot]([link_to_your_screenshot.png](https://raw.githubusercontent.com/armanhossen-dev/DarkTime/refs/heads/main/Screenshot.png))
 *(Replace with a link or relative path to a screenshot of your clock)*
 
 ## 🔥 Features
@@ -25,20 +25,3 @@ A stylish digital clock built using **HTML**, **CSS**, and **JavaScript**, featu
 ## 🚀 Live Demo
 
 You can see the live demo of DarkTime here: [https://darktime.vercel.app/](https://darktime.vercel.app/)
-
-## ⚙️ How to Use (Local Development)
-
-1.  Clone this repository to your local machine:
-    ```bash
-    git clone <repository_url>
-    ```
-    *(Replace `<repository_url>` with the actual URL of your GitHub repository)*
-
-2.  Navigate to the project directory:
-    ```bash
-    cd DarkTime
-    ```
-
-3.  Open the `index.html` file in your web browser.
-
-## 📂 File Structure
