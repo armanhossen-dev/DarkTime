@@ -1,8 +1,8 @@
-# DarkTime - Black Theme Digital Clock ⏰🖤
+# DarkTime - Black Theme Digital Clock ⏰
 
 A stylish digital clock with a sleek black design, showing the current time and date.
 
-![DarkTime Clock Screenshot](https://raw.githubusercontent.com/armanhossen-dev/DarkTime/refs/heads/main/Screenshot.png)
+![DarkTime Clock Screenshot](https://raw.githubusercontent.com/armanhossen-dev/DarkTime/refs/heads/main/Screenshot1.png)
 
 ## Features
 
