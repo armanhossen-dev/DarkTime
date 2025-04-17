@@ -1,22 +1,24 @@
-# DarkTime
-# Black Theme Digital Clock ⏰🖤
+# DarkTime - Black Theme Digital Clock ⏰🖤
 
-A stylish digital clock built using **HTML**, **CSS**, and **JavaScript**, with a sleek black-themed design and responsive layout. Displays the current time and date in real-time.
+A stylish digital clock with a sleek black design, showing the current time and date.
 
-## 🔥 Features
-- Live digital clock with hours, minutes, and seconds
-- Real-time date display (DD/MM/YYYY)
-- Responsive and modern black-themed UI
-- Smooth glassmorphism effect using backdrop blur
-- Works on all modern browsers
+![DarkTime Clock Screenshot](https://raw.githubusercontent.com/armanhossen-dev/DarkTime/refs/heads/main/Screenshot.png)
 
-## 🛠️ Technologies Used
-- HTML5
-- CSS3 (with media queries for responsiveness)
-- Vanilla JavaScript
+## Features
 
-## 🚀 Getting Started
+* Displays live time (hours, minutes, seconds)
+* Shows the current date (DD/MM/YYYY)
+* Responsive design
+* Black theme with glassmorphism effect
+* AM/PM indicator
+* Works offline (uses device clock)
 
-1. Clone or download the repository:
-   ```bash
-   git clone https://github.com/your-username/black-theme-clock.git
+## Technologies
+
+* HTML
+* CSS
+* JavaScript
+
+## Demo
+
+[View Live Demo](https://darktime.vercel.app/)
