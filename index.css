@@ -123,12 +123,8 @@ body {
         height: 100%;
         background: black;
     }
-    .clock span {
-        font-size: clamp(2rem, 5vw, 4rem);
-        width: auto;
-    }
     .clock span{
-        font-size: 12rem;
+        font-size: 10rem;
         width: 300px;
         font-weight: 600;
     }
