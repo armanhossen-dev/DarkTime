@@ -12,11 +12,13 @@
         <div class="container">
             <div class="clock"> 
                 <!--00:00:00-->
-                <span id="hr">00</span><span>:</span>
-                <span id="min">00</span><span>:</span>
+                <span id="hr">00</span>
+                <span>:</span>
+                <span id="min">00</span>
+                <span>:</span>
                 <span id="sec">00</span>
-                <span id="ampm" style="display: none;">AM</span> <!-- hidden now -->
-                </div>
+                <span id="ampm" style="font-size: 1rem; margin-left: 8px;">AM</span>
+            </div>
             <div class="date" id="dateDisplay">Loading date...</div>
         </div>
     </div>  
@@ -77,23 +79,6 @@
         console.log(currentTime.getMinutes()); // 49
         console.log(currentTime.getSeconds()); // 1
         */
-
-        function updateClock() {
-        const now = new Date();
-        let hour = now.getHours();
-        const ampm = hour >= 12 ? 'PM' : 'AM';
-        hour = hour % 12 || 12;
-
-        document.getElementById('hr').textContent = hour;
-        document.getElementById('hr').setAttribute("data-ampm", ampm);
-        document.getElementById('ampm').textContent = ampm;
-
-        document.getElementById('min').textContent = String(now.getMinutes()).padStart(2, '0');
-        document.getElementById('sec').textContent = String(now.getSeconds()).padStart(2, '0');
-    }
-    setInterval(updateClock, 1000);
-    updateClock();
-
        
     </script>
 </body>

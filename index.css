@@ -73,6 +73,11 @@ body {
     content: 'HOURS';
 }
 
+#hr::after {
+    content: ' HOURS ' attr(data-ampm);
+}
+
+
 #min::after{
     content: 'MINUTES';
 }
