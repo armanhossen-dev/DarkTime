@@ -6,7 +6,7 @@ A stylish digital clock with a sleek black design, showing the current time and 
 
 ## ✨ UI Evolution
 
-### 🔄 Updated Look
+### 🔄 Updated Look [DarkTime v2.0]
 ![DarkTime Clock - First Look](https://raw.githubusercontent.com/armanhossen-dev/DarkTime/refs/heads/main/Screenshot.png)
 
 ### 🧪 First Look
