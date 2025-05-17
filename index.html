@@ -18,8 +18,12 @@
                 <span id="min">00</span><span>:</span>
                 <span id="sec">00</span>
                 <span id="ampm" style="display: none;">AM</span> <!-- hidden now -->
-                </div>
-            <div class="date" id="dateDisplay">Loading date...</div>
+            </div>
+            <div class="datetime-wrapper">
+                <span class="date" id="dateDisplay">Loading date...</span>
+                <span class="day" id="dayDisplay">Loading day...</span>
+            </div>
+            
         </div>
     </div>  
     <script>
@@ -97,6 +101,18 @@
     updateClock();
 
        
+    function updateDay() {
+    const dayDisplay = document.getElementById("dayDisplay");
+    const days = ["SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"];
+    const now = new Date();
+    const dayName = days[now.getDay()];
+    dayDisplay.textContent = dayName;
+}
+
+// Call this function once (or inside your clock update interval)
+updateDay();
+
+
     </script>
 </body>
 </html>

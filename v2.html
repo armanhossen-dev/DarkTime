@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Black Theme Digital Clock</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="index copy.css">
     <link rel="icon" type="image/png" href="icon.png">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
 
@@ -18,8 +18,12 @@
                 <span id="min">00</span><span>:</span>
                 <span id="sec">00</span>
                 <span id="ampm" style="display: none;">AM</span> <!-- hidden now -->
-                </div>
-            <div class="date" id="dateDisplay">Loading date...</div>
+            </div>
+            <div class="datetime-wrapper">
+                <span class="date" id="dateDisplay">Loading date...</span>
+                <span class="day" id="dayDisplay">Loading day...</span>
+            </div>
+            
         </div>
     </div>  
     <script>
@@ -97,6 +101,18 @@
     updateClock();
 
        
+    function updateDay() {
+    const dayDisplay = document.getElementById("dayDisplay");
+    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const now = new Date();
+    const dayName = days[now.getDay()];
+    dayDisplay.textContent = dayName;
+}
+
+// Call this function once (or inside your clock update interval)
+updateDay();
+
+
     </script>
 </body>
 </html>
