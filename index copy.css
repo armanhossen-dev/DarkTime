@@ -128,14 +128,18 @@ body {
         width: auto;
     }
     .clock span{
-        font-size: 12rem;
+        font-size: 10rem;
         width: 300px;
         font-weight: 600;
     }
     .clock span::after{
         font-size: 12px;
         bottom: -10px;
-    }        
+    }    
+    #hr::after {
+        content: attr(data-ampm);
+    }
+        
     .date {
         transform: translate(-50%, -50%) rotate(360deg);
         display: block;
