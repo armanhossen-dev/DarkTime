@@ -124,7 +124,7 @@ body {
         background: black;
     }
     .clock span{
-        font-size: 40px;
+        font-size: 6rem;
         width: 300px;
         font-weight: 600;
     }
