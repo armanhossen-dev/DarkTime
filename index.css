@@ -113,7 +113,7 @@ body {
 
 @media (max-width: 768px) {    
     .container {
-        transform: translate(-50%, -50%) rotate(90deg);
+        transform: translate(-50%, -55%) rotate(90deg);
         height: 100%;
         width: 100%;
         background: black;
