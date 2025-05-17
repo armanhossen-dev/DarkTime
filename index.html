@@ -65,7 +65,7 @@
             month = month < 10 ? "0" + month : month;
     
             // Display date
-            dateDisplay.innerHTML = `${day} : ${month} : ${year}`;
+            dateDisplay.innerHTML = `${day} . ${month} . ${year}`;
         }, 1000);
         
         /*
@@ -100,19 +100,16 @@
     setInterval(updateClock, 1000);
     updateClock();
 
-       
-    function updateDay() {
-    const dayDisplay = document.getElementById("dayDisplay");
-    const days = ["SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"];
-    const now = new Date();
-    const dayName = days[now.getDay()];
-    dayDisplay.textContent = dayName;
-}
-
-// Call this function once (or inside your clock update interval)
-updateDay();
-
-
+        function updateDay() {
+        const dayDisplay = document.getElementById("dayDisplay");
+        const days = ["SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"];
+        const now = new Date();
+        const dayName = days[now.getDay()];
+        dayDisplay.textContent = dayName;
+    }
+    // Calling this function once (or inside your clock update interval)
+    updateDay();
+    
     </script>
 </body>
 </html>

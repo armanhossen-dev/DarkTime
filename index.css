@@ -1,7 +1,7 @@
 *{
     margin: 0;
     padding: 0;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Roboto Mono', monospace;
     box-sizing: border-box;
     font-size: clamp(1rem, 2.5vw, 1.5rem);
 }
@@ -65,8 +65,8 @@ body {
     bottom: -5px;
     left: 50%;
     transform: translateX(-50%);
+    font-family: 'Roboto Mono', monospace;
 }
-
 
 #hr::after {
     content: ' HOURS ' attr(data-ampm);
@@ -95,7 +95,6 @@ body {
 
 .date {
     margin-top: 15px;
-    
 }
 
 .datetime-wrapper {
@@ -118,8 +117,7 @@ body {
         font-size: 26px;
     }        
     .date {
-        margin-top: 40px;
-        
+        margin-top: 40px;        
     }
 }
 
@@ -147,14 +145,17 @@ body {
     #hr::after {
         content: attr(data-ampm);
     }
+    .date{
+        display: none;
+    }
              
-    .date {
+    /* .date {
         transform: translate(-50%, -50%) rotate(360deg);
         display: block;
         font-size: 1.2rem;
         margin-top: 10px;
         text-align: center;
         color: #fff;
-        font-weight: bold;
-    }
+        font-weight: bold; 
+    }*/
 }
