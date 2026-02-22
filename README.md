@@ -6,13 +6,16 @@ A stylish digital clock with a sleek black design, showing the current time and 
 
 ## ✨ UI Evolution
 
-### 🔄 Updated Look [DarkTime v2.0]
-![DarkTime Clock - First Look](https://raw.githubusercontent.com/armanhossen-dev/DarkTime/refs/heads/main/Screenshot.png)
+### 🔄 Updated Look [DarkTime v3.26]
+![DarkTime Clock - Third Look](https://raw.githubusercontent.com/armanhossen-dev/DarkTime/refs/heads/main/img/Screenshotv3.26.png)
+> The interface has been refined to enhance readability, aesthetics, and responsiveness while keeping the minimalist design philosophy intact.
+
+### 🔄 Updated Look [DarkTime v2.25]
+![DarkTime Clock - Second Look](https://raw.githubusercontent.com/armanhossen-dev/DarkTime/refs/heads/main/img/Screenshot.png)
 
 ### 🧪 First Look
-![DarkTime Clock - First Look](https://raw.githubusercontent.com/armanhossen-dev/DarkTime/refs/heads/main/Screenshot1.png)
+![DarkTime Clock - First Look](https://raw.githubusercontent.com/armanhossen-dev/DarkTime/refs/heads/main/img/Screenshot1.png)
 
-> The interface has been refined to enhance readability, aesthetics, and responsiveness while keeping the minimalist design philosophy intact.
 
 ---
 
