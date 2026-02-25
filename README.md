@@ -22,7 +22,6 @@ A stylish digital clock with a sleek black design, showing the current time and 
 ### 🧪 First Look
 ![DarkTime Clock - First Look](https://raw.githubusercontent.com/armanhossen-dev/DarkTime/refs/heads/main/img/Screenshot1.png)
 
-
 ---
 
 ## 🚀 Features
@@ -38,23 +37,10 @@ A stylish digital clock with a sleek black design, showing the current time and 
 
 ## 🛠️ Technologies Used
 
-- HTML
-- CSS
-- JavaScript
+**HTML | CSS | JavaScript **
 
 ---
 
 ## 🔗 Live Demo
 
 👉 [View Live Demo](https://darktime.vercel.app/)
-
----
-
-## 📦 Installation
-
-To run the project locally:
-
-```bash
-git clone https://github.com/armanhossen-dev/DarkTime.git
-cd DarkTime
-start index.html
