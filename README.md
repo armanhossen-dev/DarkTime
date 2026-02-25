@@ -37,7 +37,7 @@ A stylish digital clock with a sleek black design, showing the current time and 
 
 ## 🛠️ Technologies Used
 
-**HTML | CSS | JavaScript **
+**HTML | CSS | JavaScript**
 
 ---
 
