@@ -1,164 +1,156 @@
-*{
+* {
     margin: 0;
     padding: 0;
-    font-family: 'Roboto Mono', monospace;
     box-sizing: border-box;
-    font-size: clamp(1rem, 2.5vw, 1.5rem);
 }
 
 html, body {
     background: black;
-    margin: 0;
-    padding: 0;
     height: 100%;
-    overflow-x: hidden; 
+    overflow: hidden;
 }
 
 body {
-    overflow: hidden;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Roboto Mono', monospace;
 }
 
-.hero{
+.hero {
     width: 100%;
     min-height: 100vh;
     background: black;
-    position: relative;    
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.container{
-    width: 90vw;
-    height: 50vh;    
-    position: absolute;
-    top: 50%;
-    left: 50%;    
-    transform: translate(-50%,-50%);
+.container {
+    width: min(90vw, 1920px);
+    position: relative;
     z-index: 1;
 }
 
-.clock{
+.clock {
     width: 100%;
-    height: 100%;
     background: rgba(34, 34, 34, 0.257);
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1;
+    gap: clamp(0.5rem, 2vw, 1rem);
+    padding: clamp(1rem, 4vh, 3rem) clamp(0.5rem, 3vw, 2rem);
     backdrop-filter: blur(40px);
-    -webkit-backdrop-filter: blur(40px); 
+    -webkit-backdrop-filter: blur(40px);
 }
 
-.clock span{
-    top: -40px;
-    left: -50px;
-    font-size: 140px;
+.clock span {
+    background: red;
+
+    font-size: clamp(3.5rem, 14vw, 10rem);
     font-family: 'Roboto Mono', monospace;
-    width: 200px;
+    width: clamp(160px, 20vw, 280px);
     font-weight: 700;
     display: inline-block;
     text-align: center;
+    padding: 60px;
     position: relative;
     color: rgb(255, 255, 255);
+    line-height: 1;
+    padding-bottom: clamp(1.5rem, 3vh, 2rem);
 }
 
-.clock span::after{
-    font-size: 18px;
+.clock span::after {
+    font-size: clamp(0.55rem, 1.3vw, 1rem);
     position: absolute;
-    bottom: -5px;
-    left: 58%;
+    bottom: 0;
+    left: 50%;
     transform: translateX(-50%);
     font-family: 'Roboto Mono', monospace;
+    white-space: nowrap;
+    letter-spacing: 0.05em;
 }
 
 #hr::after {
-    content: ' HOURS ' attr(data-ampm);
-    font-family: 'Roboto Mono', monospace;
+    content: 'HOURS ' attr(data-ampm);
 }
 
-#min::after{
+#min::after {
     content: 'MINUTES';
-    font-family: 'Roboto Mono', monospace;
 }
 
-#sec::after{
+#sec::after {
     content: 'SECONDS';
-    font-family: 'Roboto Mono', monospace;
 }
 
-.date, .day {
+.datetime-wrapper {
+    text-align: center;
+    width: 100%;
+    margin-top: clamp(0.25rem, 1vh, 0.75rem);
+}
+
+.date,
+.day {
     display: inline-block;
-    padding: 0 30px; /* Adds space between them */
-    font-size: 1.5rem;
+    padding: 0 clamp(0.5rem, 2vw, 1.875rem);
+    font-size: clamp(0.75rem, 1.8vw, 1.25rem);
     color: white;
     font-weight: bold;
     text-align: center;
     font-family: 'Roboto Mono', monospace;
 }
 
-.date {
-    margin-top: 5px;
-}
-
-.datetime-wrapper {
-    text-align: center;
-    margin-top: 5px;
-}
-
-
-@media screen and (min-width: 1920px) {
-    .container{
-        width: 90vw;
-        height: 50vh;
-    }    
-    .clock span{
-        font-size: 13rem;
-        width: 300px;
-        font-weight: 600;
+/* Portrait / narrow screens — stack clock digits vertically */
+@media (max-width: 600px) {
+    .clock {
+        flex-direction: column;
+        gap: 0.25rem;
+        padding: 1.5rem 1rem;
+        border-radius: 6px;
     }
-    .clock span::after{
-        font-size: 26px;
-    }        
-    .date {
-        margin-top: 40px;        
-    }
-}
 
-@media (max-width: 768px) {    
-    .container {
-        transform: translate(-50%, -55%) rotate(90deg);
-        height: 100%;
+    .clock span {
+        font-size: clamp(4rem, 22vw, 7rem);
         width: 100%;
-        background: black;
-    }      
-    .clock{
-        width: 100%;
-        height: 100%;
-        background: black;
+        padding-bottom: 1.75rem;
     }
-    .clock span{
-        font-size: 7.8rem;
-        width: 300px;
-        font-weight: 600;
+
+    .clock span::after {
+        font-size: 0.6rem;
     }
-    .clock span::after{
-        font-size: 18px;
-        bottom: -10px;
-    }  
-    #hr::after {
-        content: attr(data-ampm);
-    }
-    .date{
+    #dot{
         display: none;
     }
-             
-    /* .date {
-        transform: translate(-50%, -50%) rotate(360deg);
-        display: block;
-        font-size: 1.2rem;
-        margin-top: 10px;
-        text-align: center;
-        color: #fff;
-        font-weight: bold; 
-    } */
+    .date,
+    .day {
+        font-size: 0.7rem;
+        padding: 0 0.5rem;
+    }
+}
+
+/* Tablet range — moderate adjustments */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .clock span {
+        font-size: clamp(4rem, 11vw, 7rem);
+        width: clamp(130px, 18vw, 210px);
+    }
+}
+
+/* Large / ultrawide screens */
+@media (min-width: 1920px) {
+    .clock span {
+        font-size: clamp(10rem, 9vw, 14rem);
+        width: 320px;
+    }
+
+    .clock span::after {
+        font-size: 1.1rem;
+    }
+
+    .date,
+    .day {
+        font-size: 1.5rem;
+    }
 }
