@@ -4,17 +4,19 @@ A stylish digital clock with a sleek black design, showing the current time and 
 
 ---
 
-## ✨ UI Evolution
 
-### 🔄 Updated Look [DarkTime v4.0]
-![DarkTime Clock - Third Look](https://raw.githubusercontent.com/armanhossen-dev/DarkTime/refs/heads/main/img/Screenshot2026.png)
 ### ✨ UI Improvements
-
 > The interface has been refined to improve readability, visual aesthetics, and responsiveness while maintaining a clean, minimalist design philosophy.  
-
 - ⏰ The time display is now perfectly centered for better visual balance.  
 - 📝 The website title has been updated for improved clarity and branding.
 
+## ✨ UI Evolution
+### New Modern Version [DarkTime v5.0]
+![DarkTime Clock - Present Look](https://raw.githubusercontent.com/armanhossen-dev/DarkTime/refs/heads/main/img/v5.0.png)
+![DarkTime Clock - Present Look](https://raw.githubusercontent.com/armanhossen-dev/DarkTime/refs/heads/main/img/v5.1.png)
+
+### 🔄 Updated Look [DarkTime v4.0]
+![DarkTime Clock - Third Look](https://raw.githubusercontent.com/armanhossen-dev/DarkTime/refs/heads/main/img/Screenshot2026.png)
 
 ### 🔄 Updated Look [DarkTime v2.25]
 ![DarkTime Clock - Second Look](https://raw.githubusercontent.com/armanhossen-dev/DarkTime/refs/heads/main/img/Screenshot.png)

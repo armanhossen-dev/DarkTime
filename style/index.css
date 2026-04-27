@@ -1,0 +1,339 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* Prevents text selection */
+    -webkit-user-select: none; 
+    -ms-user-select: none;  
+    user-select: none;          
+}
+
+html, body {
+    background: #000;
+    height: 100%;
+    overflow: hidden;
+    cursor: default;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    -webkit-font-smoothing: antialiased;
+    background: #000;
+}
+
+.hero {
+    width: 100%;
+    min-height: 100vh;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Container set to 80% width with larger scale */
+.container {
+    width: 80vw; 
+    background-color: transparent;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.clock {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1vw;
+}
+
+/* Increased font sizes for the 80% width layout */
+.clock span {
+    font-size: clamp(5rem, 18vw, 22rem); 
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 0.9;
+    position: relative;
+    padding-bottom: clamp(2rem, 5vw, 4rem);
+}
+
+.clock span::after {
+    font-size: clamp(0.7rem, 1.5vw, 1.2rem);
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 0.2em;
+    
+    /* ADD THESE TWO LINES */
+    white-space: nowrap;      /* Prevents "HOURS PM" from breaking into two lines */
+    text-align: center;
+}
+
+.clock .dot {
+    font-size: clamp(5rem, 18vw, 22rem);
+    color: #ffffff;
+    opacity: 0.5;
+}
+
+.datetime-wrapper {
+    margin-top: 2rem;
+    display: flex;
+    gap: 4rem;
+}
+
+.date, .day {
+    font-size: clamp(1rem, 2.5vw, 2rem);
+    color: white;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+}
+
+/* Modern Glass Toast Notification */
+.toast {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    color: white;
+    font-size: 0.9rem;
+    z-index: 1000;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    
+    /* Animation Properties */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: 
+        opacity 0.8s ease, 
+        transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+        visibility 0.8s;
+}
+
+/* State when visible */
+.toast.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+
+.hero:fullscreen .container {
+    width: 90vw;
+}
+
+/* Ensure the hour container is wide enough for the long label */
+#hr {
+    min-width: 1.2em; /* Gives the label room to breathe without wrapping */
+}
+
+/* Updated label contents */
+#hr::after {
+    content: 'HOURS ' attr(data-ampm);
+}
+
+#min::after {
+    content: 'MINUTES';
+}
+
+#sec::after {
+    content: 'SECONDS';
+}
+
+
+
+
+/* Mobile Portrait - Stack vertically */
+/* Mobile Portrait - Stack vertically and hide dots */
+@media (max-width: 600px) and (orientation: portrait) {
+    .container {
+        width: 100dvw;
+        padding: 2rem 1rem;
+    }
+
+    .clock {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    /* THIS HIDES ALL DOTS IN PORTRAIT MODE */
+    .clock .dot {
+        display: none;
+    }
+
+    .clock span {
+        font-size: 13rem;
+        width: 100%;
+        padding-bottom: 2rem;
+        text-align: center; /* Center the numbers once dots are gone */
+    }
+
+    /* Ensure the labels stay on one line even here */
+    .clock span::after {
+        white-space: nowrap;
+        font-size: 2rem;
+        bottom: .8rem;
+    }
+
+    .datetime-wrapper {
+        flex-direction: column;
+        gap: 0.25rem;
+        margin-top: 1rem;
+    }
+
+    .date{
+        font-size: 1.85rem;        
+    }
+    
+    .day {
+        font-size: 3rem;        
+        display: flex;
+        justify-content: center; /* Horizontally centers content if it's a flex container */
+        align-items: center;     /* Vertically centers content */
+        text-align: center;      /* Essential for centering text */
+    }
+}
+
+
+
+/* Mobile Landscape */
+@media (max-width: 900px) and (orientation: landscape) {
+    .container {
+        width: 95vw;
+        padding: 1.5rem 1rem;
+    }
+
+    .clock span,
+    .clock .dot {
+        font-size: 8vw;
+        padding-bottom: 2rem;
+    }
+
+    .datetime-wrapper {
+        margin-top: 0.5rem;
+    }
+}
+
+/* Tablet Portrait */
+@media (min-width: 601px) and (max-width: 1024px) and (orientation: portrait) {
+    .container {
+        width: 85vw;
+    }
+
+    .clock span,
+    .clock .dot {
+        font-size: 9vw;
+    }
+}
+
+/* Tablet Landscape / Small Desktop */
+@media (min-width: 901px) and (max-width: 1440px) {
+    .clock span,
+    .clock .dot {
+        font-size: 10vw;
+    }
+}
+
+/* Ultra-wide Screens */
+@media (min-width: 2560px) {
+    .container {
+        max-width: 2000px;
+    }
+
+    .clock span,
+    .clock .dot {
+        font-size: 16rem;
+    }
+
+    .clock span::after {
+        font-size: 1.5rem;
+    }
+
+    .date,
+    .day {
+        font-size: 2rem;
+    }
+}
+
+/* Large Screens */
+@media (min-width: 1920px) {
+    .container {
+        max-width: 1600px;
+    }
+    .clock span,
+    .clock .dot {
+        font-size: 15rem;
+    }
+    .clock span::after {
+        font-size: 1.2rem;
+    }
+    .date,
+    .day {
+        font-size: 1.8rem;
+    }
+}
+
+/* not Large Screens */
+@media (min-width: 1360px) {
+    .container {
+        max-width: 1200px;
+    }
+    .clock span,
+    .clock .dot {
+        font-size: 15rem;
+    }
+    .clock span::after {
+        font-size: 1.2rem;
+    }
+    .date,
+    .day {
+        font-size: 1.8rem;
+    }
+}
+
+
+/* Very Small Screens - Optimized */
+@media (max-width: 360px) {
+    .container {
+        width: 95vw; /* Use width instead of max-width for consistency */
+        padding: 1rem 0.5rem;
+    }
+
+    .clock {
+        gap: 0.2rem; /* Tighter gap to allow larger text */
+    }
+
+    .clock span,
+    .clock .dot {
+        font-size: 30vw; 
+        padding-bottom: 1.2rem; /* Space for the label below */
+        line-height: 0.8;
+    }
+
+    .clock span::after {
+        /* Balanced size so "HOURS PM" fits and stays legible */
+        font-size: 0.65rem; 
+        bottom: 0.3rem;
+        letter-spacing: 0.1em;
+        white-space: nowrap;
+    }
+
+    .datetime-wrapper {
+        margin-top: 1.5rem;
+        gap: 1rem;
+    }
+
+    .date,
+    .day {
+        font-size: 0.9rem; /* Bumped up slightly from 0.7rem */
+    }
+}

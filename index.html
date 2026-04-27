@@ -3,28 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DarkTime v3.26 </title>
-    <link rel="stylesheet" href="index.css">
-    <link rel="icon" type="image/png" href="img/digital-clock.png">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+    <title>DarkTime | v4.0</title>
+    <link rel="stylesheet" href="style/index.css">
+    <link rel="icon" type="image/png" href="icon.png">
+    <!-- Modern monospace fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&family=Space+Mono:wght@400;700&family=IBM+Plex+Mono:wght@400;600;700&family=Fira+Code:wght@400;600;700&family=Source+Code+Pro:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="hero">
         <div class="container">
             <div class="clock"> 
-                <!--00:00:00-->
-                <span id="hr">00</span><span id="dot">:</span>
-                <span id="min">00</span><span id="dot">:</span>
+                <span id="hr" data-ampm="AM">00</span>
+                <span class="dot">:</span>
+                <span id="min">00</span>
+                <span class="dot">:</span>
                 <span id="sec">00</span>
-                <span id="ampm" style="display: none;">AM</span> <!-- hidden now -->
             </div>
             <div class="datetime-wrapper">
-                <span class="date" id="dateDisplay">Loading date...</span>
-                <span class="day" id="dayDisplay">Loading day...</span>
+                <span class="date" id="dateDisplay">01 . 01 . 2024</span>
+                <span class="day" id="dayDisplay">MONDAY</span>
             </div>
-            
         </div>
     </div>  
-    <script src="index.js"></script>
+    <script src="code/index.js"></script>
 </body>
 </html>
