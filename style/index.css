@@ -60,7 +60,7 @@ body {
 
 .clock span {
     font-family: 'JetBrains Mono', monospace !important;
-    font-size: clamp(4rem, 22vw, 15rem); 
+    font-size: clamp(5rem, 30vw, 17rem); 
     font-weight: 800;
     color: #ffffff;
     line-height: 1;
@@ -71,7 +71,7 @@ body {
 
 /* Labels below digits */
 .clock span::after {
-    font-size: clamp(0.7rem, 2.5vw, 1.1rem);
+    font-size: clamp(1rem, 2.2vw, 2rem);
     position: absolute;
     bottom: 1.5vh;
     left: 50%;
@@ -102,6 +102,39 @@ body {
     font-weight: 700;
     letter-spacing: 0.1em;
 }
+
+/* Update the existing .day class */
+.day {
+    font-size: clamp(1rem, 2.5vw, 2rem);
+    color: white;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    /* Added for line positioning */
+    position: relative; 
+    text-transform: uppercase;
+    display: inline-block; /* Ensures lines stay relative to text width */
+}
+
+/* Add these pseudo-elements to create the lines */
+.day::before,
+.day::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: clamp(12px, 3.5vw, 24px); /* Responsive line width */
+    height: 1px;
+    background: rgba(255, 255, 255, 0.15); /* Subtle line color */
+}
+
+/* Positioning the lines on either side */
+.day::before { 
+    right: calc(100% + 15px); /* Gap between text and left line */
+}
+
+.day::after { 
+    left: calc(100% + 15px);  /* Gap between text and right line */
+}
+
 
 /* Label content injection */
 #hr::after { content: 'HOURS ' attr(data-ampm); }
@@ -142,7 +175,7 @@ body {
     .container {
         max-width: 2300px;
     }
-    
+        
     .clock {
         gap: 1vw; /* Tighter gap for massive scale */
     }
@@ -263,7 +296,7 @@ body {
     text-align: center;
     font-size: clamp(90px, 50vw, 200px);
     padding-bottom: clamp(14px, 4vw, 32px);
-    margin-bottom: clamp(10px, 3vw, 24px);
+    margin-bottom: 0px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
 
@@ -279,9 +312,9 @@ body {
     position: static; /* Removes absolute positioning from landscape */
     transform: none;
     display: block;
-    margin-top: clamp(6px, 2vw, 14px);
-    font-size: clamp(11px, 3.6vw, 18px);
-    color: rgba(255, 255, 255, 0.35);
+    margin-top: 0px;
+    font-size: clamp(11px, 6vw, 40px);
+    color: rgba(255, 255, 255, 0.4);
     letter-spacing: 0.3em;
   }
 
@@ -289,18 +322,19 @@ body {
   .datetime-wrapper {
     flex-direction: column;
     align-items: center;
-    gap: 8px;
+    gap: 2px;
     margin-top: 0;
-    margin-bottom: 2rem;
+    margin-bottom: 0;
     order: -1; /* Keeps date at the top */
   }
 
   .date {
-    font-size: clamp(18px, 5.5vw, 30px);
+    margin-top: 10px;
+    font-size: clamp(20px, 7vw, 40px);
   }
 
   .day {
-    font-size: clamp(12px, 3.5vw, 18px);
-    color: rgba(255, 255, 255, 0.35);
-  }
+    font-size: clamp(20px, 15vw, 45px);
+    color: rgba(255, 255, 255, 0.4);
+  }  
 }
