@@ -24,39 +24,3 @@ function updateClock() {
 
 setInterval(updateClock, 1000);
 updateClock();
-
-// Fullscreen Logic (optional - works on Android Chrome)
-const hero = document.querySelector('.hero');
-hero.addEventListener('dblclick', () => {
-    if (!document.fullscreenElement) {
-        hero.requestFullscreen().catch(err => console.error(err));
-    } else {
-        document.exitFullscreen();
-    }
-});
-
-let hideTimeout;
-
-function toggleSystemUI() {
-    // Attempt to enter fullscreen (hides top status bar on most mobile browsers)
-    if (!document.fullscreenElement) {
-        document.documentElement.requestFullscreen().catch(e => {
-            console.log("Fullscreen not supported or blocked");
-        });
-    }
-
-    // Show visual elements (if you have a custom top bar in HTML)
-    document.body.classList.remove('hide-ui');
-
-    // Reset the 3-second timer
-    clearTimeout(hideTimeout);
-    hideTimeout = setTimeout(() => {
-        document.body.classList.add('hide-ui');
-        // Note: You can't programmatically exit fullscreen without user intent 
-        // in most browsers, but we can hide all "on-screen" UI elements.
-    }, 3000);
-}
-
-// Listen for any touch or click on the screen
-document.addEventListener('touchstart', toggleSystemUI);
-document.addEventListener('click', toggleSystemUI);

@@ -212,9 +212,7 @@ body {
     }
 }
 
-
 /* ── Mobile Portrait Override ──────────────── */
-
 @media (orientation: portrait) {
   /* Stack the clock units vertically */
   .clock {
