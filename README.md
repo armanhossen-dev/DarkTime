@@ -24,19 +24,25 @@ A hyper-minimalist, industrial-grade digital clock engineered for focus. **DarkT
 
 ### 🏆 Current Version [DarkTime v5.0]
 > **Focus:** High-contrast, industrial typography, and fullscreen interaction.
-![DarkTime - Web View](https://raw.githubusercontent.com/armanhossen-dev/DarkTime/refs/heads/main/img/v.5.0.png)
-![DarkTime - Tab View](https://raw.githubusercontent.com/armanhossen-dev/DarkTime/refs/heads/main/img/v.5.1.png)
-![DarkTime - Mobile View](https://raw.githubusercontent.com/armanhossen-dev/DarkTime/refs/heads/main/img/v.5.2.png)
+DarkTime - Web View
+![](https://raw.githubusercontent.com/armanhossen-dev/DarkTime/refs/heads/main/img/v.5.0.png)
+DarkTime - Tab View
+![](https://raw.githubusercontent.com/armanhossen-dev/DarkTime/refs/heads/main/img/v.5.1.png)
+DarkTime - Mobile View
+![](https://raw.githubusercontent.com/armanhossen-dev/DarkTime/refs/heads/main/img/v.5.2.png)
 
 ### 🔄 Updated Look [DarkTime v4.0]
 > **Focus:** Introduction of Mono-spaced fonts and glassmorphism toast.
-![DarkTime v4.0](https://raw.githubusercontent.com/armanhossen-dev/DarkTime/refs/heads/main/img/Screenshot2026.png)
+DarkTime v4.0
+![](https://raw.githubusercontent.com/armanhossen-dev/DarkTime/refs/heads/main/img/Screenshot2026.png)
 
 ### 🔄 Heritage [DarkTime v2.25]
-![DarkTime v2.25](https://raw.githubusercontent.com/armanhossen-dev/DarkTime/refs/heads/main/img/Screenshot.png)
+DarkTime v2.25
+![](https://raw.githubusercontent.com/armanhossen-dev/DarkTime/refs/heads/main/img/Screenshot.png)
 
 ### 🧪 First Look
-![DarkTime First Look](https://raw.githubusercontent.com/armanhossen-dev/DarkTime/refs/heads/main/img/Screenshot1.png)
+DarkTime First Look
+![](https://raw.githubusercontent.com/armanhossen-dev/DarkTime/refs/heads/main/img/Screenshot1.png)
 
 ---
 
