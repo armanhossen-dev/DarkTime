@@ -60,3 +60,7 @@ A hyper-minimalist, industrial-grade digital clock engineered for focus. **DarkT
 ---
 
 Developed with ❤️ by **Md. Arman Hossen Ripon**
+
+<!---
+npx cap copy android
+---->
