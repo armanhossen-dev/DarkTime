@@ -46,6 +46,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 /* Horizontal Layout */
@@ -186,7 +187,6 @@ body.hide-ui .datetime-wrapper {
     opacity: 0.1; /* Dims the date/day instead of fully hiding for safety */
     transition: opacity 0.8s ease;
 }
-
 /* Portrait specific behavior */
 @media (orientation: portrait) {
     body.hide-ui .clock span {
