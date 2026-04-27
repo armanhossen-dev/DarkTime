@@ -136,6 +136,124 @@ body {
     }
 }
 
+/* ── NEW: 2400px+ Ultra-Wide Optimization ── */
+
+@media (min-width: 2400px) {
+    .container {
+        max-width: 2300px;
+    }
+    
+    .clock {
+        gap: 1vw; /* Tighter gap for massive scale */
+    }
+
+    .clock span {
+        font-size: 25rem; /* Massive static size for 4K */
+        padding-bottom: 80px;
+    }
+
+    .clock .dot {
+        font-size: 20rem;
+        padding-bottom: 70px;
+    }
+
+    .clock span::after {
+        font-size: 1.8rem;
+        bottom: 15px;
+    }
+
+    .date, .day {
+        font-size: 2.5rem;
+    }
+    
+    .datetime-wrapper {
+        margin-top: 3rem;
+        gap: 6rem;
+    }
+}
+
+/* Add this to your Global CSS */
+body {
+    transition: cursor 0.3s ease;
+}
+
+/* When the hide-ui class is active, we hide non-essential elements */
+body.hide-ui {
+    cursor: none; /* Hides mouse on desktop */
+}
+
+body.hide-ui .datetime-wrapper {
+    opacity: 0.1; /* Dims the date/day instead of fully hiding for safety */
+    transition: opacity 0.8s ease;
+}
+
+/* ── Modern Glass Toast Notification ── */
+
+.toast {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    /* Glass Effect */
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    
+    padding: 1.2rem 2rem;
+    border-radius: 14px;
+    color: white;
+    font-size: 0.95rem;
+    z-index: 9999;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    
+    /* Animation Initial State */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px) scale(0.95);
+    transition: 
+        opacity 0.8s ease, 
+        transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+        visibility 0.8s;
+}
+
+/* State triggered by JS toast.classList.add('show') */
+.toast.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+.toast strong {
+    color: var(--white);
+    margin-right: 5px;
+    letter-spacing: 0.05em;
+}
+
+/* Responsive adjustment for small screens */
+@media (max-width: 600px) {
+    .toast {
+        top: 20px;
+        right: 20px;
+        left: 20px; /* Center it on mobile */
+        text-align: center;
+        font-size: 0.85rem;
+        padding: 1rem;
+    }
+}
+
+
+
+
+
+
+/* Portrait specific behavior */
+@media (orientation: portrait) {
+    body.hide-ui .clock span {
+        opacity: 0.8; /* Slightly dim clock for a 'sleep' effect */
+        transition: opacity 0.8s ease;
+    }
+}
+
 
 /* ── Mobile Portrait Override ──────────────── */
 
