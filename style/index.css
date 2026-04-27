@@ -15,13 +15,18 @@ html, body {
     cursor: default;
 }
 
+
 body {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'JetBrains Mono', monospace;
+    /* Force high-priority system fonts before generic monospace */
+    font-family: 'JetBrains Mono', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     background: #000;
+    /* Disables system font-size scaling (prevents breaking layout) */
+    -webkit-text-size-adjust: 100%;
 }
 
 .hero {
@@ -150,7 +155,7 @@ body {
 }
 
 /* Mobile Portrait - Stack vertically and hide dots */
-@media (max-width: 1080px) and (orientation: portrait) {
+@media (max-width: 600px) and (orientation: portrait) {
     .container {
         width: 100dvw;
         padding: 2rem 1rem;
@@ -221,13 +226,52 @@ body {
 
 /* Tablet Portrait */
 @media (min-width: 601px) and (max-width: 1024px) and (orientation: portrait) {
-    .container {
-        width: 85vw;
+ .container {
+        width: 100dvw;
+        height: 100dvh;
+        padding: 2rem 1rem;
     }
 
-    .clock span,
+    .clock {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    /* THIS HIDES ALL DOTS IN PORTRAIT MODE */
     .clock .dot {
-        font-size: 9vw;
+        display: none;
+    }
+
+    .clock span {
+        font-size: 13rem;
+        width: 100%;
+        padding-bottom: 2rem;
+        text-align: center; /* Center the numbers once dots are gone */
+    }
+
+    /* Ensure the labels stay on one line even here */
+    .clock span::after {
+        white-space: nowrap;
+        font-size: 2rem;
+        bottom: .8rem;
+    }
+
+    .datetime-wrapper {
+        flex-direction: column;
+        gap: 0.25rem;
+        margin-top: 1rem;
+    }
+
+    .date{
+        font-size: 1.85rem;        
+    }
+    
+    .day {
+        font-size: 3rem;        
+        display: flex;
+        justify-content: center; /* Horizontally centers content if it's a flex container */
+        align-items: center;     /* Vertically centers content */
+        text-align: center;      /* Essential for centering text */
     }
 }
 
@@ -278,7 +322,7 @@ body {
     }
 }
 
-/* not Large Screens */
+/* medium Screens */
 @media (min-width: 1360px) {
     .container {
         max-width: 1200px;
