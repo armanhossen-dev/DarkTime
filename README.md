@@ -6,9 +6,9 @@ A hyper-minimalist, industrial-grade digital clock engineered for focus. **DarkT
 
 ## ✨ What’s New in v5.0
 * **Double-Tap Immersion:** Double-click anywhere to trigger true fullscreen mode for a distraction-free environment.
-* **Industrial Typography:** Transitioned to **Bebas Neue** and **Syne** for a bold, boxy, technical aesthetic.
-* **Dynamic Feedback:** Integrated glassmorphism toast notifications for interaction feedback.
-* **Zero-Distraction UI:** Responsive "Hidden Dot" logic for mobile portrait views to maintain a clean vertical stack.
+* **Industrial Typography:** Integrated **JetBrains Mono** for a high-precision, technical monospace aesthetic that ensures perfect character alignment.
+* **Dynamic Feedback:** Integrated glassmorphism toast notifications for interaction feedback, featuring backdrop blur and subtle animations.
+* **Zero-Distraction UI:** Responsive "Hidden Dot" logic for mobile portrait views to maintain a clean vertical stack and maximize readability on small screens.
 
 ---
 
