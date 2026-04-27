@@ -172,32 +172,7 @@ body {
         gap: 6rem;
     }
 }
-
-/* Add this to your Global CSS */
-body {
-    transition: cursor 0.3s ease;
-}
-
-/* When the hide-ui class is active, we hide non-essential elements */
-body.hide-ui {
-    cursor: none; /* Hides mouse on desktop */
-}
-
-body.hide-ui .datetime-wrapper {
-    opacity: 0.1; /* Dims the date/day instead of fully hiding for safety */
-    transition: opacity 0.8s ease;
-}
-/* Portrait specific behavior */
-@media (orientation: portrait) {
-    body.hide-ui .clock span {
-        opacity: 0.8; /* Slightly dim clock for a 'sleep' effect */
-        transition: opacity 0.8s ease;
-    }
-}
-
-
 /* ── Mobile Portrait Override ──────────────── */
-
 @media (orientation: portrait) {
   /* Stack the clock units vertically */
   .clock {
