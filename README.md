@@ -24,8 +24,9 @@ A hyper-minimalist, industrial-grade digital clock engineered for focus. **DarkT
 
 ### 🏆 Current Version [DarkTime v5.0]
 > **Focus:** High-contrast, industrial typography, and fullscreen interaction.
-![DarkTime v5.0](https://raw.githubusercontent.com/armanhossen-dev/DarkTime/refs/heads/main/img/v5.0.png)
-![DarkTime v5.1](https://raw.githubusercontent.com/armanhossen-dev/DarkTime/refs/heads/main/img/v5.1.png)
+![DarkTime Web View](https://raw.githubusercontent.com/armanhossen-dev/DarkTime/refs/heads/main/img/v5.0.png)
+![DarkTime Tab View](https://raw.githubusercontent.com/armanhossen-dev/DarkTime/refs/heads/main/img/v5.1.png)
+![DarkTime Mobile View](https://raw.githubusercontent.com/armanhossen-dev/DarkTime/refs/heads/main/img/v5.2.png)
 
 ### 🔄 Updated Look [DarkTime v4.0]
 > **Focus:** Introduction of Mono-spaced fonts and glassmorphism toast.
