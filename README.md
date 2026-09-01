@@ -1,6 +1,6 @@
 # 🕒 DarkTime | The High-Contrast Digital Lab
 
-A hyper-minimalist, industrial-grade digital clock engineered for focus. **DarkTime** strips away the noise, delivering a high-contrast, deep-black interface designed for developers, creators, and technical workstations.
+A minimalist, industrial-grade digital clock engineered for focus. **DarkTime** strips away the noise, delivering a high-contrast, deep-black interface designed for developers, creators, and technical workstations.
 
 ---
 
