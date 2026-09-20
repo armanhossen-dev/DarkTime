@@ -7,7 +7,6 @@
 <!-- 
 [![Latest Release](https://img.shields.io/github/v/release/armanhossen-dev/DarkTime?label=Latest%20Release&style=for-the-badge)](https://github.com/armanhossen-dev/DarkTime/releases/latest)
 --->
----
 
 ## What's New in v5 ?
 
@@ -91,4 +90,4 @@ Open source and built as part of an ongoing dev journey. Issues, stars ⭐, and 
 
 <!---
 npx cap copy android
----->
+--->
