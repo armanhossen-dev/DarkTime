@@ -6,9 +6,7 @@
 ---
 ## 🔗 Live Demo
 [![Live](https://img.shields.io/badge/Live-darktime.vercel.app-000000?style=for-the-badge)](https://darktime.vercel.app/)
-
-## 🍎 Download
-👉 **[Latest Release (macOS)](https://github.com/armanhossen-dev/DarkTime/releases/latest)**
+[![Latest Release](https://img.shields.io/github/v/release/armanhossen-dev/DarkTime?label=Latest%20Release)](https://github.com/armanhossen-dev/DarkTime/releases/latest)
 ---
 
 ## What's New in v5 ?
