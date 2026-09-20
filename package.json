@@ -1,7 +1,51 @@
 {
+  "name": "darktime",
+  "version": "5.0.0",
+  "description": "The High-Contrast Digital Lab",
+  "main": "electron-main.js",
+  "author": "Md. Arman Hossen Ripon",
+  "scripts": {
+    "start": "electron .",
+    "build:mac": "electron-builder --mac dmg",
+    "build:win": "electron-builder --win nsis portable"
+  },
+  "build": {
+    "appId": "com.darktime.app",
+    "productName": "DarkTime",
+    "directories": {
+      "output": "dist-electron"
+    },
+    "files": [
+      "electron-main.js",
+      "www/**/*",
+      "img/**/*"
+    ],
+    "mac": {
+      "category": "public.app-category.utilities",
+      "target": [
+        "dmg"
+      ],
+      "icon": "img/clock.png"
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ],
+      "icon": "img/clock.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  },
   "dependencies": {
     "@capacitor/android": "^8.3.1",
     "@capacitor/cli": "^8.3.1",
     "@capacitor/core": "^8.3.1"
+  },
+  "devDependencies": {
+    "electron": "^35.1.1",
+    "electron-builder": "^26.15.3"
   }
 }

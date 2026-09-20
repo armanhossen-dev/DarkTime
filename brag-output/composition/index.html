@@ -1,0 +1,876 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>DarkTime Launch</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'JetBrains Mono', monospace;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      body {
+        margin: 0;
+        background: #000000;
+        color: #ffffff;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+      }
+
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #000000;
+      }
+
+      .clip {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+
+      /* Audio-reactive subtle glow */
+      .glow-layer {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.05) 0%, transparent 65%);
+        opacity: 0.5;
+      }
+
+      /* Technical frame overlay */
+      .tech-frame {
+        position: absolute;
+        inset: 40px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        pointer-events: none;
+        z-index: 100;
+      }
+
+      .tech-frame::before {
+        content: '+';
+        position: absolute;
+        top: -12px;
+        left: -8px;
+        font-size: 16px;
+        color: rgba(255, 255, 255, 0.4);
+      }
+
+      .tech-frame::after {
+        content: '+';
+        position: absolute;
+        bottom: -12px;
+        right: -8px;
+        font-size: 16px;
+        color: rgba(255, 255, 255, 0.4);
+      }
+
+      .frame-header {
+        position: absolute;
+        top: 20px;
+        left: 30px;
+        right: 30px;
+        display: flex;
+        justify-content: space-between;
+        font-size: 13px;
+        letter-spacing: 0.25em;
+        color: #999999;
+        text-transform: uppercase;
+      }
+
+      .frame-footer {
+        position: absolute;
+        bottom: 20px;
+        left: 30px;
+        right: 30px;
+        display: flex;
+        justify-content: space-between;
+        font-size: 13px;
+        letter-spacing: 0.25em;
+        color: #999999;
+        text-transform: uppercase;
+      }
+
+      /* =========================================
+         SCENE 1: THE HOOK
+         ========================================= */
+      #scene-1 .inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        gap: 28px;
+      }
+
+      .hook-badge {
+        display: inline-block;
+        font-size: 14px;
+        letter-spacing: 0.3em;
+        color: #cccccc;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 8px 20px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .hook-title-1 {
+        font-size: 64px;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        color: #ffffff;
+      }
+
+      .hook-title-2 {
+        font-size: 72px;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        color: #ffffff;
+      }
+
+      .hook-colon {
+        font-size: 140px;
+        font-weight: 700;
+        color: #ffffff;
+        line-height: 0.6;
+        margin-top: 10px;
+      }
+
+      /* =========================================
+         SCENE 2: THE CLOCK INSTRUMENT
+         ========================================= */
+      #scene-2 .clock-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        max-width: 1600px;
+      }
+
+      .clock-display {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 36px;
+      }
+
+      .digit-unit {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+      }
+
+      .digits {
+        font-size: 180px;
+        font-weight: 700;
+        color: #ffffff;
+        line-height: 1;
+        font-variant-numeric: tabular-nums;
+        letter-spacing: -0.04em;
+      }
+
+      .unit-label {
+        font-size: 20px;
+        font-weight: 700;
+        color: #999999;
+        letter-spacing: 0.22em;
+        margin-top: 18px;
+        text-transform: uppercase;
+      }
+
+      .clock-colon {
+        font-size: 150px;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.45);
+        line-height: 1;
+        margin-bottom: 36px;
+      }
+
+      .datetime-bar {
+        margin-top: 60px;
+        display: flex;
+        align-items: center;
+        gap: 40px;
+      }
+
+      .date-val {
+        font-size: 26px;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        color: #ffffff;
+      }
+
+      .day-val {
+        font-size: 26px;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        color: #ffffff;
+        position: relative;
+      }
+
+      .day-val::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: calc(100% + 20px);
+        width: 32px;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.3);
+      }
+
+      .day-val::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: calc(100% + 20px);
+        width: 32px;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.3);
+      }
+
+      /* =========================================
+         SCENE 3: INTERACTION & TOAST
+         ========================================= */
+      #scene-3 .interaction-stage {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .toast-box {
+        position: absolute;
+        top: 90px;
+        right: 90px;
+        background: rgba(255, 255, 255, 0.09);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        padding: 22px 36px;
+        border-radius: 16px;
+        color: #ffffff;
+        font-size: 20px;
+        z-index: 200;
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .toast-box strong {
+        color: #ffffff;
+        letter-spacing: 0.08em;
+      }
+
+      .cursor-pointer {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 38px;
+        height: 38px;
+        z-index: 300;
+        pointer-events: none;
+        filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.6));
+      }
+
+      .click-ripple {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-left: -30px;
+        margin-top: -30px;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: 2px solid rgba(255, 255, 255, 0.85);
+        pointer-events: none;
+        z-index: 250;
+      }
+
+      .fullscreen-banner {
+        position: absolute;
+        bottom: 80px;
+        font-size: 16px;
+        letter-spacing: 0.3em;
+        color: #aaaaaa;
+        text-transform: uppercase;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        padding: 10px 24px;
+        border-radius: 6px;
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      /* =========================================
+         SCENE 4: ARCHITECTURE & SPEC
+         ========================================= */
+      #scene-4 .spec-stage {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        max-width: 1640px;
+        gap: 40px;
+      }
+
+      .spec-header {
+        text-align: center;
+      }
+
+      .spec-eyebrow {
+        font-size: 15px;
+        letter-spacing: 0.35em;
+        color: #aaaaaa;
+        text-transform: uppercase;
+        margin-bottom: 12px;
+      }
+
+      .spec-title {
+        font-size: 52px;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        color: #ffffff;
+      }
+
+      .spec-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
+        width: 100%;
+      }
+
+      .spec-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        padding: 40px 32px;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .spec-num {
+        font-size: 14px;
+        letter-spacing: 0.25em;
+        color: #aaaaaa;
+      }
+
+      .spec-card-title {
+        font-size: 26px;
+        font-weight: 700;
+        color: #ffffff;
+        letter-spacing: -0.01em;
+      }
+
+      .spec-card-desc {
+        font-size: 16px;
+        line-height: 1.6;
+        color: #bbbbbb;
+      }
+
+      .responsive-strip {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 32px;
+        margin-top: 10px;
+      }
+
+      .badge-tag {
+        font-size: 13px;
+        letter-spacing: 0.2em;
+        color: #dddddd;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        padding: 6px 16px;
+        border-radius: 4px;
+      }
+
+      /* =========================================
+         SCENE 5: OUTRO & LOGO
+         ========================================= */
+      #scene-5 .outro-inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        gap: 24px;
+      }
+
+      .brand-icon {
+        width: 90px;
+        height: 90px;
+        margin-bottom: 8px;
+      }
+
+      .brand-title {
+        font-size: 80px;
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        color: #ffffff;
+      }
+
+      .brand-subtitle {
+        font-size: 22px;
+        letter-spacing: 0.35em;
+        color: #aaaaaa;
+        text-transform: uppercase;
+      }
+
+      .cta-url-box {
+        margin-top: 16px;
+        padding: 16px 42px;
+        background: #ffffff;
+        color: #000000;
+        border-radius: 8px;
+        font-size: 24px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+      }
+
+      .author-credit {
+        margin-top: 12px;
+        font-size: 14px;
+        letter-spacing: 0.25em;
+        color: #888888;
+        text-transform: uppercase;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-width="1920"
+      data-height="1080"
+      data-duration="20"
+    >
+      <!-- Subtle audio-reactive glow -->
+      <div id="ambient-glow" class="glow-layer"></div>
+
+      <!-- Persistent technical framing -->
+      <div class="tech-frame">
+        <div class="frame-header">
+          <span>DARKTIME // V5.0</span>
+          <span>SYSTEM HW 1:1 SYNC</span>
+        </div>
+        <div class="frame-footer">
+          <span>OLED #000000 ARCHITECTURE</span>
+          <span>4K MONOSPACE LAB</span>
+        </div>
+      </div>
+
+      <!-- Tactile Sound Effects (No Background Music) -->
+      <audio
+        id="sfx-hook1"
+        data-start="0.5"
+        data-duration="0.10"
+        data-track-index="11"
+        data-volume="0.75"
+        src="assets/sfx/interface/click_001.ogg"
+      ></audio>
+      <audio
+        id="sfx-hook2"
+        data-start="1.3"
+        data-duration="0.10"
+        data-track-index="12"
+        data-volume="0.75"
+        src="assets/sfx/interface/click_001.ogg"
+      ></audio>
+      <audio
+        id="sfx-reveal"
+        data-start="3.5"
+        data-duration="0.18"
+        data-track-index="13"
+        data-volume="0.80"
+        src="assets/sfx/impact/impactSoft_medium_001.ogg"
+      ></audio>
+      <audio
+        id="sfx-tick1"
+        data-start="5.5"
+        data-duration="0.05"
+        data-track-index="14"
+        data-volume="0.70"
+        src="assets/sfx/interface/select_008.ogg"
+      ></audio>
+      <audio
+        id="sfx-tick2"
+        data-start="6.5"
+        data-duration="0.05"
+        data-track-index="15"
+        data-volume="0.70"
+        src="assets/sfx/interface/select_008.ogg"
+      ></audio>
+      <audio
+        id="sfx-click1"
+        data-start="9.2"
+        data-duration="0.06"
+        data-track-index="16"
+        data-volume="0.80"
+        src="assets/sfx/ui/mouseclick1.ogg"
+      ></audio>
+      <audio
+        id="sfx-click2"
+        data-start="9.4"
+        data-duration="0.01"
+        data-track-index="17"
+        data-volume="0.80"
+        src="assets/sfx/interface/click_003.ogg"
+      ></audio>
+      <audio
+        id="sfx-toast"
+        data-start="9.5"
+        data-duration="0.11"
+        data-track-index="18"
+        data-volume="0.80"
+        src="assets/sfx/interface/drop_001.ogg"
+      ></audio>
+      <audio
+        id="sfx-fullscreen"
+        data-start="10.3"
+        data-duration="0.62"
+        data-track-index="19"
+        data-volume="0.65"
+        src="assets/sfx/interface/switch_001.ogg"
+      ></audio>
+      <audio
+        id="sfx-card1"
+        data-start="13.64"
+        data-duration="0.19"
+        data-track-index="20"
+        data-volume="0.75"
+        src="assets/sfx/interface/drop_002.ogg"
+      ></audio>
+      <audio
+        id="sfx-card2"
+        data-start="14.73"
+        data-duration="0.19"
+        data-track-index="21"
+        data-volume="0.75"
+        src="assets/sfx/interface/drop_002.ogg"
+      ></audio>
+      <audio
+        id="sfx-card3"
+        data-start="15.84"
+        data-duration="0.19"
+        data-track-index="22"
+        data-volume="0.75"
+        src="assets/sfx/interface/drop_002.ogg"
+      ></audio>
+      <audio
+        id="sfx-outro"
+        data-start="17.5"
+        data-duration="1.48"
+        data-track-index="23"
+        data-volume="0.85"
+        src="assets/sfx/impact/impactBell_heavy_000.ogg"
+      ></audio>
+      <audio
+        id="sfx-url"
+        data-start="18.0"
+        data-duration="0.09"
+        data-track-index="24"
+        data-volume="0.75"
+        src="assets/sfx/ui/click1.ogg"
+      ></audio>
+
+      <!-- SCENE 1: THE HOOK (0.0s - 3.5s) -->
+      <section id="scene-1" class="clip" data-start="0" data-duration="3.5">
+        <div class="inner" id="hook-content">
+          <div class="hook-badge" id="hook-badge">THE WORKSTATION PARADOX</div>
+          <div class="hook-title-1" id="hook-line-1">WORKSTATIONS ARE NOISY.</div>
+          <div class="hook-title-2" id="hook-line-2">TIME SHOULD BE PURE.</div>
+          <div class="hook-colon" id="hook-colon">:</div>
+        </div>
+      </section>
+
+      <!-- SCENE 2: THE CLOCK INSTRUMENT (3.5s - 8.75s) -->
+      <section id="scene-2" class="clip" data-start="3.5" data-duration="5.25">
+        <div class="clock-container" id="clock-instrument">
+          <div class="clock-display" id="clock-main-display">
+            <div class="digit-unit">
+              <span class="digits" id="hr-digits">10</span>
+              <span class="unit-label">HOURS AM</span>
+            </div>
+            <span class="clock-colon" id="colon-1">:</span>
+            <div class="digit-unit">
+              <span class="digits" id="min-digits">42</span>
+              <span class="unit-label">MINUTES</span>
+            </div>
+            <span class="clock-colon" id="colon-2">:</span>
+            <div class="digit-unit">
+              <span class="digits" id="sec-digits">58</span>
+              <span class="unit-label">SECONDS</span>
+            </div>
+          </div>
+          <div class="datetime-bar" id="datetime-bar">
+            <span class="date-val">20 . 09 . 2026</span>
+            <span class="day-val">SUNDAY</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCENE 3: DOUBLE-TAP IMMERSION (8.75s - 13.5s) -->
+      <section id="scene-3" class="clip" data-start="8.75" data-duration="4.75">
+        <div class="interaction-stage" id="interaction-stage">
+          <!-- Scaled clock in background -->
+          <div class="clock-container" id="scene3-clock">
+            <div class="clock-display">
+              <div class="digit-unit">
+                <span class="digits">10</span>
+                <span class="unit-label">HOURS AM</span>
+              </div>
+              <span class="clock-colon">:</span>
+              <div class="digit-unit">
+                <span class="digits">43</span>
+                <span class="unit-label">MINUTES</span>
+              </div>
+              <span class="clock-colon">:</span>
+              <div class="digit-unit">
+                <span class="digits">00</span>
+                <span class="unit-label">SECONDS</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Glassmorphism Toast Notification -->
+          <div class="toast-box" id="glass-toast">
+            <strong>Tip:</strong> Double-click to toggle Fullscreen mode.
+          </div>
+
+          <!-- Simulated cursor pointer -->
+          <svg
+            id="sim-cursor"
+            class="cursor-pointer"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M3 3L10.07 20.97L13.58 13.58L20.97 10.07L3 3Z"
+              fill="white"
+              stroke="black"
+              stroke-width="1.5"
+            />
+          </svg>
+
+          <!-- Click ripple elements -->
+          <div id="click-ripple-1" class="click-ripple"></div>
+          <div id="click-ripple-2" class="click-ripple"></div>
+
+          <!-- Fullscreen state indicator -->
+          <div class="fullscreen-banner" id="fullscreen-banner">
+            [ TRUE FULLSCREEN IMMERSION // BORDERLESS OLED ]
+          </div>
+        </div>
+      </section>
+
+      <!-- SCENE 4: ARCHITECTURE & SPEC (13.5s - 17.5s) -->
+      <section id="scene-4" class="clip" data-start="13.5" data-duration="4.0">
+        <div class="spec-stage" id="spec-stage">
+          <div class="spec-header" id="spec-header">
+            <div class="spec-eyebrow">HIGH-CONTRAST DIGITAL LAB</div>
+            <div class="spec-title">ENGINEERED FOR WORKSTATIONS</div>
+          </div>
+
+          <div class="spec-grid">
+            <div class="spec-card" id="card-1">
+              <div class="spec-num">01 / ARCHITECTURE</div>
+              <div class="spec-card-title">OLED Pure Black</div>
+              <div class="spec-card-desc">
+                Deep #000000 architecture cuts power consumption and eliminates workstation eye strain.
+              </div>
+            </div>
+            <div class="spec-card" id="card-2">
+              <div class="spec-num">02 / TYPOGRAPHY</div>
+              <div class="spec-card-title">JetBrains Mono</div>
+              <div class="spec-card-desc">
+                Tabular monospace alignment guarantees zero character jitter and industrial legibility.
+              </div>
+            </div>
+            <div class="spec-card" id="card-3">
+              <div class="spec-num">03 / ADAPTIVE</div>
+              <div class="spec-card-title">Fluid Responsive</div>
+              <div class="spec-card-desc">
+                Adaptive CSS clamp matrix scales from 4K monitors to mobile portrait vertical stacks.
+              </div>
+            </div>
+          </div>
+
+          <div class="responsive-strip" id="responsive-strip">
+            <span class="badge-tag">OFFLINE FIRST</span>
+            <span class="badge-tag">ZERO DEPENDENCIES</span>
+            <span class="badge-tag">1:1 HARDWARE SYNC</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCENE 5: OUTRO & CTA (17.5s - 20.0s) -->
+      <section id="scene-5" class="clip" data-start="17.5" data-duration="2.5">
+        <div class="outro-inner" id="outro-inner">
+          <img src="assets/img/clock.png" alt="DarkTime Clock" class="brand-icon" id="brand-icon" />
+          <div class="brand-title" id="brand-title">DarkTime v5.0</div>
+          <div class="brand-subtitle" id="brand-subtitle">The High-Contrast Digital Lab</div>
+          <div class="cta-url-box" id="cta-box">darktime.vercel.app</div>
+          <div class="author-credit" id="author-credit">Engineered by Md. Arman Hossen Ripon</div>
+        </div>
+      </section>
+    </div>
+
+    <!-- GSAP Seekable Paused Timeline -->
+    <script>
+      const tl = gsap.timeline({ paused: true });
+
+      // Ambient audio-reactive breathing glow
+      tl.to("#ambient-glow", { opacity: 0.8, duration: 2.5, ease: "sine.inOut", yoyo: true, repeat: 7 }, 0);
+
+      // Stable resting baselines
+      tl.set("#click-ripple-1", { scale: 0, opacity: 0 }, 0);
+      tl.set("#click-ripple-2", { scale: 0, opacity: 0 }, 0);
+
+      // =========================================
+      // SCENE 1 (0.0s - 3.5s)
+      // =========================================
+      tl.from("#hook-badge", { y: -20, opacity: 0, duration: 0.5, ease: "power2.out" }, 0.2);
+      tl.from("#hook-line-1", { y: 30, opacity: 0, duration: 0.6, ease: "power3.out" }, 0.5);
+      tl.from("#hook-line-2", { y: 30, opacity: 0, duration: 0.6, ease: "power3.out" }, 1.3);
+      tl.fromTo(
+        "#hook-colon",
+        { opacity: 0.2, scale: 0.9 },
+        { opacity: 1, scale: 1.1, duration: 0.8, yoyo: true, repeat: 2, ease: "power2.inOut" },
+        1.8
+      );
+      tl.to("#hook-content", { opacity: 0, scale: 0.95, duration: 0.35, ease: "power2.in" }, 3.15);
+
+      // =========================================
+      // SCENE 2 (3.5s - 8.75s) - Beat-locked reveal
+      // =========================================
+      // beat-locked: 3.50s reveal slam
+      tl.fromTo(
+        "#clock-instrument",
+        { opacity: 0, scale: 0.85 },
+        { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.2)" },
+        3.5
+      );
+
+      // Colons pulse with clock cycle
+      tl.to(["#colon-1", "#colon-2"], { opacity: 0.9, duration: 0.5, yoyo: true, repeat: 5, ease: "power1.inOut" }, 3.8);
+
+      // Seconds tick simulation: 58 -> 59 -> 00
+      tl.to("#sec-digits", {
+        innerText: "59",
+        snap: { innerText: 1 },
+        duration: 0.1,
+        ease: "none",
+      }, 5.5);
+      tl.to("#sec-digits", {
+        innerText: "00",
+        snap: { innerText: 1 },
+        duration: 0.1,
+        ease: "none",
+      }, 6.5);
+      tl.to("#min-digits", {
+        innerText: "43",
+        snap: { innerText: 1 },
+        duration: 0.1,
+        ease: "none",
+      }, 6.5);
+
+      // Settle and exit
+      // beat-locked: 8.74s
+      tl.to("#clock-instrument", { opacity: 0, scale: 1.05, duration: 0.4, ease: "power2.in" }, 8.35);
+
+      // =========================================
+      // SCENE 3 (8.75s - 13.5s) - Double-Click Immersion
+      // =========================================
+      tl.from("#scene3-clock", { opacity: 0, scale: 0.9, duration: 0.4, ease: "power2.out" }, 8.75);
+
+      // Cursor movement and double-click using x/y transforms
+      tl.fromTo(
+        "#sim-cursor",
+        { x: 500, y: 280, opacity: 0 },
+        { x: 0, y: 0, opacity: 1, duration: 0.45, ease: "power2.out" },
+        8.75
+      );
+
+      // First click at 9.2s
+      tl.to("#sim-cursor", { scale: 0.85, duration: 0.08, yoyo: true, repeat: 1 }, 9.2);
+      tl.fromTo("#click-ripple-1", { scale: 0, opacity: 0.9 }, { scale: 1.8, opacity: 0, duration: 0.35, ease: "power2.out" }, 9.2);
+
+      // Second click at 9.4s (Double click)
+      tl.to("#sim-cursor", { scale: 0.85, duration: 0.08, yoyo: true, repeat: 1 }, 9.4);
+      tl.fromTo("#click-ripple-2", { scale: 0, opacity: 0.9 }, { scale: 2.5, opacity: 0, duration: 0.4, ease: "power2.out" }, 9.4);
+
+      // Glass toast entrance
+      tl.fromTo(
+        "#glass-toast",
+        { y: -30, opacity: 0, scale: 0.95 },
+        { y: 0, opacity: 1, scale: 1, duration: 0.55, ease: "back.out(1.4)" },
+        9.5
+      );
+
+      // Viewport expands into borderless fullscreen
+      tl.to("#scene3-clock", { scale: 1.15, duration: 0.8, ease: "power3.inOut" }, 10.3);
+      tl.fromTo("#fullscreen-banner", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 10.8);
+      tl.to("#sim-cursor", { opacity: 0, duration: 0.25 }, 10.2);
+
+      // beat-locked: 13.11s transition
+      tl.to("#interaction-stage", { opacity: 0, duration: 0.38, ease: "power2.in" }, 13.11);
+
+      // =========================================
+      // SCENE 4 (13.5s - 17.5s) - Architecture Spec
+      // =========================================
+      tl.from("#spec-header", { y: -20, opacity: 0, duration: 0.4, ease: "power2.out" }, 13.5);
+
+      // beat-grid: card 1 at 13.64s, card 2 at 14.73s, card 3 at 15.84s
+      tl.fromTo("#card-1", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "power3.out" }, 13.64);
+      tl.fromTo("#card-2", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "power3.out" }, 14.73);
+      tl.fromTo("#card-3", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "power3.out" }, 15.84);
+
+      tl.from("#responsive-strip", { opacity: 0, duration: 0.4 }, 16.2);
+
+      // beat-locked: 17.47s outro transition
+      tl.to("#spec-stage", { opacity: 0, scale: 0.95, duration: 0.35, ease: "power2.in" }, 17.15);
+
+      // =========================================
+      // SCENE 5 (17.5s - 20.0s) - Outro & Brand Lockup
+      // =========================================
+      tl.fromTo(
+        "#brand-icon",
+        { scale: 0, rotation: -20, opacity: 0 },
+        { scale: 1, rotation: 0, opacity: 1, duration: 0.5, ease: "back.out(1.5)" },
+        17.5
+      );
+      tl.from("#brand-title", { y: 30, opacity: 0, duration: 0.45, ease: "power3.out" }, 17.65);
+      tl.from("#brand-subtitle", { y: 20, opacity: 0, duration: 0.4, ease: "power2.out" }, 17.8);
+      tl.from("#cta-box", { scale: 0.9, opacity: 0, duration: 0.4, ease: "back.out(1.3)" }, 18.0);
+      tl.from("#author-credit", { opacity: 0, duration: 0.4 }, 18.2);
+
+      // Final fade to black at 19.8s
+      tl.to("#outro-inner", { opacity: 0, duration: 0.3, ease: "power1.in" }, 19.7);
+
+      // Register timeline
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

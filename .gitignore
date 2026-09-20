@@ -1,2 +1,16 @@
+# Dependencies
+node_modules/
+
+# Build caches & unpacked distributions
+dist-electron/
+dist/
+.gradle/
+android/.gradle/
+android/app/build/
+android/build/
+android/capacitor-cordova-android-plugins/build/
+
+# Operating System Metadata
 .DS_Store
 **/.DS_Store
+Thumbs.db

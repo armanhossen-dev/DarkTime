@@ -1,5 +1,6 @@
 {
   "appId": "com.darktime.app",
   "appName": "DarkTime",
-  "webDir": "www"
+  "webDir": "www",
+  "backgroundColor": "#000000"
 }

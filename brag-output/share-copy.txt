@@ -1,0 +1,1 @@
+DarkTime v5.0: The industrial-grade digital clock engineered for absolute focus. Zero distractions, OLED pure black (#000000), and precision monospace typography. darktime.vercel.app
