@@ -26,14 +26,39 @@ setInterval(updateClock, 1000);
 updateClock();
 
 // 2. Fullscreen Logic
-const hero = document.querySelector('.hero');
-hero.addEventListener('dblclick', () => {
-    if (!document.fullscreenElement) {
-        hero.requestFullscreen().catch(err => console.error(err));
-    } else {
-        document.exitFullscreen();
+function toggleFullScreenMode() {
+    // 1. Native macOS WKWebView bridge (DMG app)
+    if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.toggleFullScreen) {
+        window.webkit.messageHandlers.toggleFullScreen.postMessage({});
+        return;
     }
-});
+
+    // 2. Standard HTML5 Fullscreen API (Browsers, Windows, Mobile)
+    const isFullScreen = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement;
+    if (!isFullScreen) {
+        const target = hero || document.documentElement;
+        if (target.requestFullscreen) {
+            target.requestFullscreen().catch(err => console.error(err));
+        } else if (target.webkitRequestFullscreen) {
+            target.webkitRequestFullscreen();
+        } else if (target.mozRequestFullScreen) {
+            target.mozRequestFullScreen();
+        }
+    } else {
+        if (document.exitFullscreen) {
+            document.exitFullscreen().catch(err => console.error(err));
+        } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+        } else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+        }
+    }
+}
+
+const hero = document.querySelector('.hero');
+if (hero) {
+    hero.addEventListener('dblclick', toggleFullScreenMode);
+}
 
 // 3. First-Time Visit Notification
 // First-Time Visit Notification with Fade In/Out

@@ -6,9 +6,14 @@ Thumbs.db
 # Dependencies
 node_modules/
 
+# IDE & Editor files
+.vscode/
+.idea/
+
 # Build caches & unpacked distributions
 dist-electron/
 dist/
+build-mac/
 .gradle/
 android/.gradle/
 android/app/build/

@@ -6,19 +6,25 @@
   "author": "Md. Arman Hossen Ripon",
   "scripts": {
     "start": "electron .",
+    "build:mac:native": "bash scripts/build-mac-native.sh",
     "build:mac": "electron-builder --mac dmg",
     "build:win": "electron-builder --win nsis portable"
   },
   "build": {
     "appId": "com.darktime.app",
     "productName": "DarkTime",
+    "compression": "maximum",
     "directories": {
       "output": "dist-electron"
     },
     "files": [
       "electron-main.js",
       "www/**/*",
-      "img/**/*"
+      "!www/img/Screenshot*.png",
+      "!www/img/*.png",
+      "www/img/clock.png",
+      "www/clock.png",
+      "img/clock.png"
     ],
     "mac": {
       "category": "public.app-category.utilities",
@@ -39,12 +45,11 @@
       "allowToChangeInstallationDirectory": true
     }
   },
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "@capacitor/android": "^8.3.1",
     "@capacitor/cli": "^8.3.1",
-    "@capacitor/core": "^8.3.1"
-  },
-  "devDependencies": {
+    "@capacitor/core": "^8.3.1",
     "electron": "^35.1.1",
     "electron-builder": "^26.15.3"
   }
