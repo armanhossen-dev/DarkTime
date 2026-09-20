@@ -13,4 +13,8 @@ android/capacitor-cordova-android-plugins/build/
 # Operating System Metadata
 .DS_Store
 **/.DS_Store
+
 Thumbs.db
+
+.DS_Store
+**/.DS_Store
