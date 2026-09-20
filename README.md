@@ -3,10 +3,8 @@
 **DarkTime** is a minimalist, industrial-grade digital clock engineered for focus. It strips away visual noise and delivers a high-contrast, deep-black interface purpose-built for developers, creators, and technical workstations — precision timekeeping treated as an instrument, not a widget.
 
 ![License](https://img.shields.io/badge/license-MIT-white?style=for-the-badge)     
----
-## 🔗 Live Demo
-[![Live](https://img.shields.io/badge/Live-darktime.vercel.app-000000?style=for-the-badge)](https://darktime.vercel.app/)
-[![Latest Release](https://img.shields.io/github/v/release/armanhossen-dev/DarkTime?label=Latest%20Release)](https://github.com/armanhossen-dev/DarkTime/releases/latest)
+[![Live](https://img.shields.io/badge/Live-darktime.vercel.app-000000?style=for-the-badge)](https://darktime.vercel.app/)     
+[![Latest Release](https://img.shields.io/github/v/release/armanhossen-dev/DarkTime?label=Latest%20Release&style=for-the-badge)](https://github.com/armanhossen-dev/DarkTime/releases/latest)
 ---
 
 ## What's New in v5 ?
