@@ -2,14 +2,14 @@
 
 **DarkTime** is a minimalist, industrial-grade digital clock engineered for focus. It strips away visual noise and delivers a high-contrast, deep-black interface purpose-built for developers, creators, and technical workstations — precision timekeeping treated as an instrument, not a widget.
 
-![License](https://img.shields.io/badge/license-MIT-white?style=for-the-badge)     
-[![Live](https://img.shields.io/badge/Live-darktime.vercel.app-000000?style=for-the-badge)](https://darktime.vercel.app/)     
+![License](https://img.shields.io/badge/license-MIT-white?style=for-the-badge)
+[![Live](https://img.shields.io/badge/Live-darktime.vercel.app-000000?style=for-the-badge)](https://darktime.vercel.app/)
 [![Latest Release](https://img.shields.io/github/v/release/armanhossen-dev/DarkTime?label=Latest%20Release&style=for-the-badge)](https://github.com/armanhossen-dev/DarkTime/releases/latest)
 
 ## What's New in v5 ?
 
 | Feature | Description |
-| :--- | :--- |
+| :---: | :---: |
 | **Double-Tap Immersion** | Double-click anywhere to trigger true fullscreen mode for a distraction-free session. |
 | **Industrial Typography** | Integrated **JetBrains Mono** for a high-precision monospace aesthetic with perfect character alignment. |
 | **Dynamic Feedback** | Glassmorphism toast notifications with backdrop blur and subtle motion for interaction feedback. |
